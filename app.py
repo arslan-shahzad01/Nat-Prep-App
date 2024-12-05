@@ -120,6 +120,14 @@ def admin_dashboard():
                 st.rerun()  # Force a re-run to refresh the data
             except ValueError as e:
                 st.error(e)
+        elif st.button(f"Remove {user_to_promote} from Admin"):
+            try:
+                db.remove_admin(user_to_promote)
+                st.success(f"{user_to_promote} hs been removed from admin.")
+                st.rerun()  # Force a re-run to refresh the data
+            except ValueError as e:
+                st.error(e)
+        
 
 def exams():
     if "username" not in st.session_state:
@@ -131,7 +139,7 @@ def exams():
         return
 
     st.subheader("Select an Exam Type")
-    exam_types = ["VERBAL ABILITY", "ANALYTICAL REASONING", "QUANTITATIVE REASONING", "SUBJECT KNOWLEDGE"]
+    exam_types = ["VERBAL ABILITY", " ANALYTICAL REASONING", "QUANTITATIVE REASONING", "SUBJECT KNOWLEDGE"]
 
     for exam in exam_types:
         if st.button(exam):
