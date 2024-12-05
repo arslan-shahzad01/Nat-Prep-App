@@ -67,6 +67,18 @@ class UserDatabase:
         finally:
             conn.close()
 
+    def remove_admin(self, username):
+        conn = self._get_connection()
+        cursor = conn.cursor()
+        try:
+            cursor.execute("UPDATE Users SET user_type = 'student' WHERE username = ?", (username,))
+            if cursor.rowcount == 0:
+                raise ValueError("User not found.")
+            conn.commit()
+            return True
+        finally:
+            conn.close()
+
 
     def get_all_users(self):
         conn = self._get_connection()
@@ -106,6 +118,8 @@ class UserDatabase:
         questions = cursor.fetchall()
         conn.close()
         
+        print(exam_type)
+
         # Debug: Log the fetched results
         print(f"Fetched {len(questions)} questions for exam type: {exam_type}")
         
