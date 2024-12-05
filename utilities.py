@@ -167,7 +167,7 @@ class UserDatabase:
             # Calculate totals
             total_attempted = sum(data[0] for data in progress_data)
             total_correct = sum(data[1] for data in progress_data)
-            total_score = sum(data[2] for data in progress_data)
+            total_score = (total_correct/total_attempted)*100
 
             return total_attempted, total_correct, total_score
         finally:
