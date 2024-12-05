@@ -1,3 +1,2 @@
 build-essential
 libssl-dev
-pip install --upgrade pip
