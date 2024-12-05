@@ -1,1 +1,2 @@
 bcrypt==4.0.1
+db-sqlite3
