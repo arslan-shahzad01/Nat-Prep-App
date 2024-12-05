@@ -230,7 +230,7 @@ def progress():
         with col2:
             st.metric("Total Correct Answers", total_correct)
         with col3:
-            st.metric("Success Percentage", total_score,"%)
+            st.metric("Success Percentage", total_score,"%")
     else:
         st.warning("No progress data available.")
     
